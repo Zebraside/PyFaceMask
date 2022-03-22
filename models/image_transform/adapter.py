@@ -14,7 +14,7 @@ class ImageTransform:
 
     def transform(self, image):
         orig_shape = image.shape
-        image = cv2.resize(image, (300, 300))
+        image = cv2.resize(image, (320, 240))
         with torch.no_grad():
             image_transform = transforms.Compose([
                 transforms.ToTensor(),
@@ -28,3 +28,6 @@ class ImageTransform:
             transformed = cv2.resize(transformed, (orig_shape[1], orig_shape[0]))
 
         return transformed
+
+    def __call__(self, frame):
+        return self.transform(frame)

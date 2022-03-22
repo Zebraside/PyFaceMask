@@ -33,12 +33,12 @@ class FaceSegmentation:
             if self.device != 'cpu':
                 img = img.cuda()
 
-            t1 = time.time()
             out = self.net(img)[0]
-            t2 = time.time()
-            print("Inference time", t2 - t1)
 
             parsing = out.squeeze(0).cpu().numpy().argmax(0)
-            parsing = np.where(parsing < 16, parsing, 0)
+            # parsing = np.where(parsing < 16, parsing, 0)
         parsing = cv2.resize(parsing, (orig_shape[1], orig_shape[0]), interpolation=cv2.INTER_NEAREST)
         return parsing
+
+    def __call__(self, frame):
+        return self.segment(frame)
