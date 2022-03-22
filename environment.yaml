@@ -1,0 +1,29 @@
+#TODO: yamlize
+#python 3.8
+#pytroch
+#torchvision
+#python-opencv
+#face-recognition # pip
+#onnx
+#onnxruntime
+#tlcpack -c tlcpack
+## onnx-tensorflow externalpip install -e .
+#tensorflow # pip
+name: PyFaceMask2
+channels:
+  - defaults
+  - pytorch
+  - tlcpack
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - pytorch
+  - torchvision
+  - opencv
+  - onnx
+  - tlcpack
+  - pip:
+    - onnxruntime
+    - tensorflow
+    - face-recognition
